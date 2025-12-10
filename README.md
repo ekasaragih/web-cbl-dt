@@ -1,59 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Portal Pembelajaran CBL-DT (Anatomi Fisiologi Manusia)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Laravel](https://img.shields.io/badge/Laravel-10%2F11-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![MySQL](https://img.shields.io/badge/Database-MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
-## About Laravel
+## 📖 Tentang Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Website ini adalah sistem manajemen pembelajaran yang dikembangkan untuk mendukung model **Challenge Based Learning (CBL)** yang terintegrasi dengan **Design Thinking (DT)**. Sistem ini dirancang khusus untuk mata kuliah **Anatomi Fisiologi Manusia** guna meningkatkan keterampilan berpikir kritis mahasiswa.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Aplikasi ini berfungsi sebagai pusat informasi, panduan sintaks, repositori bahan ajar, serta platform pengumpulan tugas proyek mahasiswa.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Fitur Utama
 
-## Learning Laravel
+-   **Landing Page Informatif:** Penjelasan visual mengenai model CBL-DT, teori pendukung (Konstruktivisme, Kognitivisme, dll), dan alur sintaks pembelajaran.
+-   **Panduan Interaktif:** Viewer PDF terintegrasi untuk menampilkan Buku Panduan Dosen dan Mahasiswa tanpa harus keluar dari aplikasi.
+-   **Repository Dokumen:** Akses terpusat ke RPS, LKM, Instrumen Penilaian, dan Lembar Validasi (terintegrasi dengan Google Drive).
+-   **Manajemen Proyek:** Fitur bagi mahasiswa untuk mengunggah tugas/proyek per pertemuan (Gambar/Dokumen) dan memberikan deskripsi.
+-   **Galeri Proyek:** Menampilkan hasil karya mahasiswa yang telah diunggah.
+-   **Sintaks & Tahapan:** Penjelasan rinci langkah-langkah pembelajaran dari *Empathize* hingga *Rencana Tindak Lanjut*.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Teknologi yang Digunakan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   **Backend Framework:** Laravel 10/11 (PHP)
+-   **Frontend:** Blade Templates & Bootstrap 5
+-   **Database:** MySQL
+-   **Fitur Lain:** PDF Viewer (Iframe), Storage Link
 
-## Laravel Sponsors
+## 🚀 Cara Instalasi (Localhost)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Ikuti langkah-langkah berikut untuk menjalankan proyek ini di komputer lokal Anda:
 
-### Premium Partners
+### Prasyarat
+Pastikan Anda sudah menginstal:
+-   PHP (versi >= 8.1)
+-   Composer
+-   MySQL (via XAMPP/Laragon/Docker)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Langkah Instalasi
 
-## Contributing
+1.  **Clone Repository**
+    ```bash
+    git clone [https://github.com/USERNAME_ANDA/laravel-cbl-dt.git](https://github.com/USERNAME_ANDA/laravel-cbl-dt.git)
+    cd laravel-cbl-dt
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2.  **Install Dependencies**
+    ```bash
+    composer install
+    ```
 
-## Code of Conduct
+3.  **Setup Environment**
+    Salin file `.env.example` menjadi `.env`:
+    ```bash
+    cp .env.example .env
+    ```
+    Buka file `.env` dan sesuaikan konfigurasi database Anda:
+    ```env
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=cbl_dt_db  <-- Pastikan database ini sudah dibuat
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4.  **Generate Key**
+    ```bash
+    php artisan key:generate
+    ```
 
-## Security Vulnerabilities
+5.  **Migrasi Database**
+    ```bash
+    php artisan migrate
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6.  **Setup Storage Link**
+    Penting agar file upload dan PDF bisa diakses publik:
+    ```bash
+    php artisan storage:link
+    ```
 
-## License
+7.  **Jalankan Server**
+    ```bash
+    php artisan serve
+    ```
+    Buka browser dan akses: `http://127.0.0.1:8000`
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📂 Struktur File Penting
+
+-   `app/Models/Project.php` - Model database untuk tugas mahasiswa.
+-   `app/Http/Controllers/ProjectController.php` - Logika upload dan display proyek.
+-   `resources/views/pages/` - Halaman utama (Home, Panduan, Perangkat, dll).
+-   `public/files/` - Lokasi penyimpanan file PDF statis (Panduan Dosen/Mahasiswa).
+
+<!-- ## 👥 Kredit & Tim Pengembang
+
+**Peneliti & Pengembang Utama:**
+* **Sulton Nawawi** (Program Studi Doktor Pendidikan MIPA - Universitas Jambi)
+
+**Tim Promotor:**
+* Prof. Dr. Dra. Asni Johari, M.Si.
+* Prof. Dr. Revis Asra, M.Si.
+* Dr. Dra. Evita Anggereini, M.Si. -->
+
+---
+&copy; 2025 Model Pembelajaran CBL-DT. All Rights Reserved.
