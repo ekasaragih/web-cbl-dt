@@ -11,5 +11,8 @@ Route::get('/perangkat', [PageController::class, 'perangkat'])->name('perangkat'
 Route::get('/evaluasi', [PageController::class, 'evaluasi'])->name('evaluasi');
 
 // Route khusus Project (Tampil & Upload)
-Route::get('/project', [ProjectController::class, 'index'])->name('project');
-Route::post('/project', [ProjectController::class, 'store'])->name('project.store');
+// Route::get('/project', [ProjectController::class, 'index'])->name('project');
+// Route::post('/project', [ProjectController::class, 'store'])->name('project.store');
+
+// route for project (for students)
+Route::get('/project', [PageController::class, 'project'])->name('project');

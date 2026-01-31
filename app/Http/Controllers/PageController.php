@@ -11,11 +11,6 @@ class PageController extends Controller
         return view('features.beranda'); 
     }
 
-    public function sintaks() 
-    { 
-        return view('features.sintaks'); 
-    }
-
     public function panduan() 
     { 
         return view('features.panduan'); 
@@ -26,9 +21,14 @@ class PageController extends Controller
         return view('features.perangkat'); 
     }
     
+    public function project()
+    {
+        return view('features.project');
+    }
+
     public function evaluasi() 
     { 
-        return view('features.evaluasi'); 
+        return view('coming-soon'); 
     }
 
 }

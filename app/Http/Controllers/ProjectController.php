@@ -8,11 +8,25 @@ use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = Project::query();
+
+        // filter based on Pertemuan (jika ada input)
+        if ($request->has('pertemuan') && $request->pertemuan != '') {
+            $query->where('pertemuan_ke', $request->pertemuan);
+        }
+
         // get latest proj
-        $projects = Project::latest()->get();
-        return view('pages.project', compact('projects'));
+        $sort = $request->get('sort', 'latest');
+        if ($sort == 'oldest') {
+            $query->oldest();
+        } else {
+            $query->latest();
+        }
+
+        $projects = $query->get();
+        return view('features.project', compact('projects'));
     }
 
     // ini harusnya dari pov mhsw sih
