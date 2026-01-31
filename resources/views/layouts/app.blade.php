@@ -27,6 +27,8 @@
 
 <body>
     {{-- ini bisa langsung utk mobile and desktop --}}
+
+
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top mb-4">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('beranda') }}">CBL-DT</a>
@@ -40,10 +42,31 @@
                             href="{{ route('panduan') }}">Panduan</a></li>
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('perangkat') ? 'active' : '' }}"
                             href="{{ route('perangkat') }}">Perangkat Pembelajaran</a></li>
+
+                    @php
+                    $role = session('role');
+                    @endphp
+
+                    @if($role === 'mahasiswa')
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('project') ? 'active fw-bold' : '' }}"
-                            href="{{ route('project') }}">Project</a></li>
+                            href="{{ route('project') }}">Projek</a></li>
+                    @elseif($role === 'dosen')
                     <li class="nav-item"><a class="nav-link {{ request()->routeIs('evaluasi') ? 'active' : '' }}"
                             href="{{ route('evaluasi') }}">Evaluasi</a></li>
+                    @endif
+
+                    @if(session()->has('role'))
+                    <li class="nav-item">
+                        <a class="nav-link
+                        <form action=" {{ route('role.signout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-light btn-sm">
+                                <i class="fa-solid fa-right-from-bracket me-1"></i> Ganti Peran
+                            </button>
+                            </form>
+                        </a>
+                    </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -51,6 +74,7 @@
 
     <div class="container">
         @yield('content')
+
     </div>
 
     <footer class="text-center py-4 mt-5 text-muted border-top bg-white">

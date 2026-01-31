@@ -315,7 +315,7 @@
                     <p class="small text-muted mb-2"><em>"Menyusun langkah implementasi berkelanjutan."</em></p>
                     <p class="card-text">
                         Memastikan solusi tidak berhenti di kelas. Mahasiswa menyusun rencana aksi nyata untuk
-                        keberlanjutan solusi di masa depan[.
+                        keberlanjutan solusi di masa depan.
                     </p>
                     <ul class="list-unstyled small text-secondary">
                         <li>✔️ Revisi prototipe</li>

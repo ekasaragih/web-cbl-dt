@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        if (!session()->has('role')) {
+            redirect()->route('gate')->send();
+        }
+    }
+
     public function index() 
     { 
         return view('features.beranda'); 
