@@ -8,6 +8,10 @@ class GateController extends Controller
 {
     public function chooseRole()
     {
+        if (session()->has('role')) {
+            return redirect()->route('beranda');
+        }
+
         return view('gate.choose-role');
     }
 

@@ -56,15 +56,21 @@
                     @endif
 
                     @if(session()->has('role'))
-                    <li class="nav-item">
-                        <a class="nav-link
-                        <form action=" {{ route('role.signout') }}" method="POST">
+                    <li class="nav-item d-flex align-items-center ms-3">
+                        <span class="text-light small me-2 opacity-75 d-flex align-items-center">
+                            @if($role === 'dosen')
+                            <i class="fa-solid fa-chalkboard-user me-1"></i> Dosen
+                            @elseif($role === 'mahasiswa')
+                            <i class="fa-solid fa-user-graduate me-1"></i> Mahasiswa
+                            @endif
+                        </span>
+
+                        <form action="{{ route('role.signout') }}" method="POST" class="m-0">
                             @csrf
-                            <button type="submit" class="btn btn-outline-light btn-sm">
-                                <i class="fa-solid fa-right-from-bracket me-1"></i> Ganti Peran
+                            <button type="submit" class="btn btn-outline-light btn-sm px-2 py-1">
+                                Ganti
                             </button>
-                            </form>
-                        </a>
+                        </form>
                     </li>
                     @endif
                 </ul>

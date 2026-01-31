@@ -14,8 +14,13 @@
                 <form method="POST" action="{{ route('otp.verify') }}">
                     @csrf
 
-                    <input type="text" name="otp" class="form-control form-control-lg mb-3" placeholder="Masukkan OTP">
-
+                    <div class="input-group mb-3">
+                        <input type="password" name="otp" id="otpInput" class="form-control form-control-lg"
+                            placeholder="Masukkan OTP" autofocus>
+                        <button class="btn btn-outline-secondary" type="button" id="toggleOtp">
+                            <i class="fa-solid fa-eye" id="otpIcon"></i>
+                        </button>
+                    </div>
 
                     <button class="btn btn-primary w-100 btn-lg">
                         Verifikasi
@@ -33,4 +38,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    const otpInput = document.getElementById('otpInput');
+    const toggleOtp = document.getElementById('toggleOtp');
+    const otpIcon = document.getElementById('otpIcon');
+
+    toggleOtp.addEventListener('click', function () {
+        const type = otpInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        otpInput.setAttribute('type', type);
+
+        otpIcon.classList.toggle('fa-eye');
+        otpIcon.classList.toggle('fa-eye-slash');
+    });
+</script>
 @endsection
