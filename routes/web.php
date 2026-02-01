@@ -20,13 +20,9 @@ Route::get('/sintaks', [PageController::class, 'sintaks'])->name('sintaks');
 Route::get('/panduan', [PageController::class, 'panduan'])->name('panduan');
 Route::get('/perangkat', [PageController::class, 'perangkat'])->name('perangkat');
 
-
-// Route khusus Project (Tampil & Upload)
-// Route::get('/project', [ProjectController::class, 'index'])->name('project');
-// Route::post('/project', [ProjectController::class, 'store'])->name('project.store');
-
 // project (for students)
 Route::get('/project', [PageController::class, 'project'])->name('project');
+Route::post('/project', [ProjectController::class, 'store'])->name('project.store');
 
 // evaluasi (for lecturer)
 Route::get('/evaluasi', [ProjectController::class, 'index'])->name('evaluasi');
