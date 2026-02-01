@@ -153,7 +153,7 @@
 
                             @error('url')
                             <div class="text-danger small mt-1">
-                                URL tidak boleh kosong
+                                {{ $message }}
                             </div>
                             @enderror
                         </div>
@@ -173,4 +173,31 @@
         </div>
     </div>
 </div>
+
+@if(session('success_submit'))
+<div class="modal fade show" id="successModal" tabindex="-1" style="display: block; background: rgba(0,0,0,.5)">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 rounded-4 shadow">
+            <div class="modal-body text-center p-4">
+                <i class="fa-solid fa-circle-check text-success fs-1 mb-3"></i>
+
+                <h5 class="fw-bold mb-2">Tugas berhasil dikumpulkan</h5>
+                <p class="text-muted small mb-4">
+                    Apakah Anda ingin mengumpulkan tugas lainnya?
+                </p>
+
+                <div class="d-flex gap-2 justify-content-center">
+                    <a href="{{ route('project') }}" class="btn btn-primary rounded-pill px-4">
+                        Ya, kumpul lagi
+                    </a>
+
+                    <a href="{{ route('beranda') }}" class="btn btn-outline-secondary rounded-pill px-4">
+                        Tidak
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @endsection

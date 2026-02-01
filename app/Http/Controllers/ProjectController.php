@@ -24,27 +24,24 @@ class ProjectController extends Controller
             'deskripsi' => 'nullable|string',
             'nilai' => 'nullable|numeric|min:0|max:100',
             'url' => [
+                'bail',
                 'required',
-                'url',
                 function ($attribute, $value, $fail) {
                     if (!str_contains($value, 'drive.google.com')) {
                         $fail('Link harus berasal dari Google Drive.');
                     }
-
-                    if (!preg_match('/\/file\/d\//', $value)) {
-                        $fail('Link harus berupa link file Google Drive, bukan folder.');
-                    }
-                }
+                },
+                'url',
             ]
+
         ]);
 
-        // cek apakah link bisa diakses
         $response = Http::timeout(5)->get($request->url);
 
         if (!$response->successful()) {
-            return back()->withErrors([
-                'url' => 'Link tidak dapat diakses. Pastikan file bersifat publik.',
-            ])->withInput();
+            return back()
+                ->withErrors(['url' => 'Link tidak dapat diakses. Pastikan file bersifat publik.'])
+                ->withInput();
         }
 
         Project::create([
@@ -53,10 +50,10 @@ class ProjectController extends Controller
             'pertemuan_ke' => $request->pertemuan_ke,
             'deskripsi' => $request->deskripsi,
             'nilai' => $request->nilai,
-            'URL' => $request->url, // kolom DB boleh uppercase
+            'URL' => $request->url,
         ]);
 
-        return redirect()->back()->with('success', 'Tugas berhasil dikumpul');
+        return back()->with('success_submit', true);
     }
 
 }
