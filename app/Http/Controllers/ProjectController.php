@@ -56,4 +56,18 @@ class ProjectController extends Controller
         return back()->with('success_submit', true);
     }
 
+    public function updateNilai(Request $request, $id)
+    {
+        $request->validate([
+            'nilai' => 'required|numeric|min:0|max:100',
+        ]);
+
+        Project::where('id', $id)->update([
+            'nilai' => $request->nilai,
+        ]);
+
+        return back()->with('success', 'Nilai berhasil diperbarui');
+    }
+
+
 }

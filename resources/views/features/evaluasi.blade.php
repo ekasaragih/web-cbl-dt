@@ -2,182 +2,238 @@
 
 @section('content')
 
-    <style>
-        /* Header Style (Sama dengan Repository) */
-        .header-course {
-            background: linear-gradient(rgba(13, 44, 84, 0.95), rgba(13, 44, 84, 0.85)), url('https://source.unsplash.com/1600x900/?technology,student');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 60px 40px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 15px 40px rgba(13, 44, 84, 0.2);
-        }
+<style>
+    /* Header Style (Sama dengan Repository) */
+    .header-course {
+        background: linear-gradient(rgba(13, 44, 84, 0.95), rgba(13, 44, 84, 0.85)), url('https://source.unsplash.com/1600x900/?technology,student');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 60px 40px;
+        border-radius: 20px;
+        margin-bottom: 40px;
+        box-shadow: 0 15px 40px rgba(13, 44, 84, 0.2);
+    }
 
-        /* Card Upload Style */
-        .card-upload {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            background: #fff;
-        }
+    /* Card Upload Style */
+    .card-upload {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        background: #fff;
+    }
 
-        .card-upload-header {
-            background: #0d2c54;
-            color: white;
-            padding: 20px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    .card-upload-header {
+        background: #0d2c54;
+        color: white;
+        padding: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-        /* Card Project Style */
-        .card-project {
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            background: #fff;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            top: 0;
-        }
+    /* Card Project Style */
+    .card-project {
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        background: #fff;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        top: 0;
+    }
 
-        .card-project:hover {
-            top: -5px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
+    .card-project:hover {
+        top: -5px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
 
-        .file-preview-box {
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #eee;
-        }
+    .file-preview-box {
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eee;
+    }
 
-        .badge-pertemuan {
-            background-color: #e3f2fd;
-            color: #0d47a1;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-        }
+    .badge-pertemuan {
+        background-color: #e3f2fd;
+        color: #0d47a1;
+        font-weight: 700;
+        padding: 5px 12px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+    }
 
-        .text-date {
-            font-size: 0.75rem;
-            color: #6c757d;
-            font-style: italic;
-        }
+    .text-date {
+        font-size: 0.75rem;
+        color: #6c757d;
+        font-style: italic;
+    }
 
-        /* Input Group Icons */
-        .input-group-text {
-            background-color: #f1f3f5;
-            border: 1px solid #ced4da;
-            color: #495057;
-        }
+    /* Input Group Icons */
+    .input-group-text {
+        background-color: #f1f3f5;
+        border: 1px solid #ced4da;
+        color: #495057;
+    }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
 
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            vertical-align: top;
-        }
+    th,
+    td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        vertical-align: top;
+    }
 
-        th {
-            background: #f0f0f0;
-        }
+    th {
+        background: #f0f0f0;
+    }
 
-        .badge {
-            background: #e5e7eb;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 12px;
-        }
+    .badge {
+        background: #e5e7eb;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+    }
 
-        .pagination {
-            margin-top: 20px;
-        }
-    </style>
+    .pagination {
+        margin-top: 20px;
+    }
+</style>
 
-    <div class="container">
+<div class="container">
 
-        <div class="header-course text-center text-md-start">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <span class="badge bg-warning text-dark fw-bold mb-3 px-3 py-2 rounded-pill"><i
-                            class="fa-solid fa-shapes me-2"></i>Project Based Learning</span>
-                    <h1 class="display-5 fw-bold mb-2">Galeri Tugas & Proyek</h1>
-                    <p class="lead mb-0 text-light opacity-90">
-                        Kumpulan tugas, portofolio, dan hasil karya mahasiswa pada mata kuliah Anatomi Fisiologi Manusia.
-                    </p>
-                </div>
+    <div class="header-course text-center text-md-start">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <span class="badge bg-warning text-dark fw-bold mb-3 px-3 py-2 rounded-pill"><i
+                        class="fa-solid fa-shapes me-2"></i>Project Based Learning</span>
+                <h1 class="display-5 fw-bold mb-2">Galeri Tugas & Proyek</h1>
+                <p class="lead mb-0 text-light opacity-90">
+                    Kumpulan tugas, portofolio, dan hasil karya mahasiswa pada mata kuliah Anatomi Fisiologi Manusia.
+                </p>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <h2>📘 Submission Tugas Mahasiswa</h2>
+    <div class="row">
+        <h2>Daftar Tugas Mahasiswa</h2>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Nama Mahasiswa</th>
-                        <th>Email</th>
-                        <th>Pertemuan</th>
-                        <th>Deskripsi</th>
-                        <th>File</th>
-                        <th>Waktu Submit</th>
-                        <th>Nilai</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($submissions as $s)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $s->nama_mahasiswa }}</td>
-                            <td>{{ $s->email ?? '-' }}</td>
-                            <td>
-                                <span class="badge">
-                                    Pertemuan {{ $s->pertemuan_ke }}
-                                </span>
-                            </td>
-                            <td>{{ $s->deskripsi ?? '-' }}</td>
-                            <td>
-                                <a href="{{ $s->url }}" target="_blank" class="btn">
-                                    📎 Buka File
-                                </a>
-                            </td>
-                            <td>{{ $s->created_at->format('d M Y H:i') }}</td>
-                            <td>{{ $s->nilai ?? '-' }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" style="text-align:center;">
-                                Belum ada submission
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nama Mahasiswa</th>
+                    <th>Email</th>
+                    <th>Pertemuan</th>
+                    <th>Deskripsi</th>
+                    <th>File</th>
+                    <th>Waktu Submit</th>
+                    <th>Nilai</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($submissions as $s)
+                <tr>
+                    <td>{{ $s->id }}</td>
+                    <td>{{ $s->nama_mahasiswa }}</td>
+                    <td>{{ $s->email ?? '-' }}</td>
+                    <td>
+                        <span class="badge bg-success">
+                            Pertemuan {{ $s->pertemuan_ke }}
+                        </span>
+                    </td>
+                    <td>{{ $s->deskripsi ?? '-' }}</td>
+                    <td>
+                        <a href="{{ $s->URL }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                            <i class="fa-solid fa-cloud-arrow-down me-1"></i>
+                            Unduh
+                        </a>
+                    </td>
+                    <td>{{ $s->created_at->timezone('Asia/Jakarta')->format('d M Y H:i') }}</td>
+                    <td class="text-center align-middle" style="min-width:140px">
+                        @if(session('role') === 'dosen')
 
-            <div class="pagination">
-                {{ $submissions->links() }}
-            </div>
+                        <div id="nilai-view-{{ $s->id }}" class="d-inline-flex align-items-center gap-2">
+                            @if($s->nilai !== null)
+                            <span class="fw-semibold text-dark">
+                                {{ $s->nilai }}
+                            </span>
+
+                            <button type="button" class="btn btn-sm btn-light border" title="Ubah nilai"
+                                onclick="toggleNilai('{{ $s->id }}')">
+                                <i class="fa-solid fa-pen text-secondary"></i>
+                            </button>
+                            @else
+                            <button type="button" class="btn btn-sm btn-outline-primary" title="Isi nilai"
+                                onclick="toggleNilai('{{ $s->id }}')">
+                                <i class="fa-solid fa-plus"></i> Isi nilai
+                            </button>
+                            @endif
+                        </div>
+
+                        <form id="nilai-form-{{ $s->id }}" action="{{ route('evaluasi.nilai.update', $s->id) }}"
+                            method="POST" class="d-none justify-content-center align-items-center gap-2">
+                            @csrf
+                            @method('PUT')
+
+                            <input type="number" name="nilai" value="{{ $s->nilai }}"
+                                class="form-control form-control-sm text-center" min="0" max="100" style="width:70px"
+                                required>
+
+                            <button class="btn btn-sm btn-success" title="Simpan">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-sm btn-light border" title="Batal"
+                                onclick="toggleNilai('{{ $s->id }}')">
+                                <i class="fa-solid fa-xmark text-secondary"></i>
+                            </button>
+                        </form>
+
+                        @else
+                        <span class="text-muted">
+                            {{ $s->nilai ?? '-' }}
+                        </span>
+                        @endif
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="8" style="text-align:center;">
+                        Belum ada submission
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center mt-4">
+            {{ $submissions->onEachSide(1)->links() }}
         </div>
+    </div>
 
-    </div>
-    </div>
+</div>
+
+<script>
+    function toggleNilai(id) {
+        const view = document.getElementById(`nilai-view-${id}`);
+        const form = document.getElementById(`nilai-form-${id}`);
+
+        view.classList.toggle('d-none');
+        form.classList.toggle('d-none');
+        form.classList.toggle('d-flex');
+    }
+</script>
 @endsection

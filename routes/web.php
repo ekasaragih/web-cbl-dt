@@ -27,4 +27,7 @@ Route::post('/project', [ProjectController::class, 'store'])->name('project.stor
 // evaluasi (for lecturer)
 Route::get('/evaluasi', [ProjectController::class, 'index'])->name('evaluasi');
 Route::post('/evaluasi', [ProjectController::class, 'store'])->name('store');
+Route::put('/evaluasi/{id}/nilai', [ProjectController::class, 'updateNilai'])
+    ->name('evaluasi.nilai.update');
+
 
