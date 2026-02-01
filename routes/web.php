@@ -29,4 +29,6 @@ Route::get('/perangkat', [PageController::class, 'perangkat'])->name('perangkat'
 Route::get('/project', [PageController::class, 'project'])->name('project');
 
 // evaluasi (for lecturer)
-Route::get('/evaluasi', [PageController::class, 'evaluasi'])->name('evaluasi');
+Route::get('/evaluasi', [ProjectController::class, 'index'])->name('evaluasi');
+Route::post('/evaluasi', [ProjectController::class, 'store'])->name('store');
+

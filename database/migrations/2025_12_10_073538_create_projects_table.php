@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -14,9 +13,10 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('nama_mahasiswa');
+            $table->string('email')->nullable();
             $table->integer('pertemuan_ke');
             $table->text('deskripsi')->nullable();
-            $table->string('file_path'); 
+            $table->string('URL');
             $table->timestamps();
         });
     }

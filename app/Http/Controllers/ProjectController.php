@@ -8,46 +8,31 @@ use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $query = Project::query();
-
-        // filter based on Pertemuan (jika ada input)
-        if ($request->has('pertemuan') && $request->pertemuan != '') {
-            $query->where('pertemuan_ke', $request->pertemuan);
-        }
-
-        // get latest proj
-        $sort = $request->get('sort', 'latest');
-        if ($sort == 'oldest') {
-            $query->oldest();
-        } else {
-            $query->latest();
-        }
-
-        $projects = $query->get();
-        return view('features.project', compact('projects'));
+        $submissions = Project::latest()->paginate(10);
+        return view('features.evaluasi', compact('submissions'));
     }
 
-    // ini harusnya dari pov mhsw sih
+    // Simpan data dari form / webhook
     public function store(Request $request)
     {
         $request->validate([
-            'nama_mahasiswa' => 'required',
-            'pertemuan_ke' => 'required',
-            'file_project' => 'required|mimes:jpg,jpeg,png,pdf,doc,docx,zip|max:5120', // max file 5MB
+            'nama_mahasiswa' => 'required|string|max:255',
+            'email' => 'nullable|email',
+            'pertemuan_ke' => 'required|integer|min:1',
+            'deskripsi' => 'nullable|string',
+            'url' => 'required|url'
         ]);
-
-        // upload file
-        $path = $request->file('file_project')->store('public/uploads');
 
         Project::create([
             'nama_mahasiswa' => $request->nama_mahasiswa,
+            'email' => $request->email,
             'pertemuan_ke' => $request->pertemuan_ke,
             'deskripsi' => $request->deskripsi,
-            'file_path' => str_replace('public/', '', $path), // save to new clean path
+            'url' => $request->url,
         ]);
 
-        return redirect()->back()->with('success', 'Project successfully updated!');
+        return redirect()->back()->with('success', 'Tugas berhasil dikirim');
     }
 }

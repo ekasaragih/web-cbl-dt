@@ -13,8 +13,10 @@ class Project extends Model
 
     protected $fillable = [
         'nama_mahasiswa',
+        'email',
         'pertemuan_ke',
         'deskripsi',
-        'file_path',
+        'URL',
+        'nilai',
     ];
 }
