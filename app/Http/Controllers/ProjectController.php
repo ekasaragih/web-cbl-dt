@@ -9,9 +9,25 @@ use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $submissions = Project::latest()->paginate(10);
+        $query = Project::query();
+
+        if ($request->filled('q')) {
+            $q = $request->q;
+
+            $query->where(function ($sub) use ($q) {
+                $sub->where('nama_mahasiswa', 'like', "%{$q}%")
+                    ->orWhere('email', 'like', "%{$q}%")
+                    ->orWhere('pertemuan_ke', 'like', "%{$q}%");
+            });
+        }
+
+        $submissions = $query
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
         return view('features.evaluasi', compact('submissions'));
     }
 

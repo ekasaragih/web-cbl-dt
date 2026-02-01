@@ -128,7 +128,44 @@
     </div>
 
     <div class="row">
-        <h2>Daftar Tugas Mahasiswa</h2>
+        <h2 class="mb-3">
+            Daftar Tugas Mahasiswa
+            @if(request('q'))
+            <span class="text-muted fs-6">
+                — hasil pencarian "{{ request('q') }}"
+            </span>
+            @endif
+        </h2>
+
+        {{-- filter search --}}
+        <form method="GET" class="mb-3">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+                        <input type="text" name="q" class="form-control"
+                            placeholder="Cari nama, email, atau pertemuan..." value="{{ request('q') }}">
+                    </div>
+                </div>
+
+                <div class="col-auto">
+                    <button class="btn btn-primary">
+                        <i class="fa-solid fa-filter me-1"></i>
+                        Cari
+                    </button>
+                </div>
+
+                @if(request('q'))
+                <div class="col-auto">
+                    <a href="{{ route('evaluasi') }}" class="btn btn-outline-secondary">
+                        Reset
+                    </a>
+                </div>
+                @endif
+            </div>
+        </form>
 
         <table>
             <thead>
